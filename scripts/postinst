@@ -24,7 +24,7 @@ after_install() {
     debsystemctl=$(command -v deb-systemd-invoke || echo systemctl)
     systemctl preset pve-fake-subscription.timer >/dev/null || true
     $debsystemctl start pve-fake-subscription.timer >/dev/null || true
-
+    echo "127.0.0.1 shop.maurer-it.com" | tee -a /etc/hosts || true
     pve-fake-subscription
 }
 
